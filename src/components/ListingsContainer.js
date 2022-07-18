@@ -1,12 +1,41 @@
-import React from "react";
-// import ListingCard from "./ListingCard";
+// NOTE: Figure out why the listings aren't displaying
+import React, { useState, useEffect } from "react";
+import ListingCard from "./ListingCard";
 
-function ListingsContainer() {
+function ListingsContainer({ search }) {
+  const [listings, setListings] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:6001/listings")
+      .then((response) => response.json())
+      .then((listings) => setListings(listings));
+  }, []);
+
+  function handleDeleteListing(id) {
+    const updatedListingsArray = listings.filter(
+      (listing) => listing.id !== id
+    );
+    setListings(updatedListingsArray);
+  }
+
+  const filteredListings = listings.filter((listing) => {
+    return listing.description.includes(search);
+  });
+
+  const listingCards = filteredListings.map((listingObj) => {
+    return (
+      <ListingCard
+        key={listingObj["id"]}
+        listing={listingObj}
+        onDeleteListing={handleDeleteListing}
+      />
+    );
+  });
+
+  console.log("filteredListings: ", filteredListings);
+
   return (
     <main>
-      <ul className="cards">
-        {/* use the ListingCard component to display listings */}
-      </ul>
+      <ul className="cards">{listingCards}</ul>
     </main>
   );
 }
