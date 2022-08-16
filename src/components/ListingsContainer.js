@@ -5,7 +5,7 @@ import ListingCard from "./ListingCard";
 function ListingsContainer({ search }) {
   const [listings, setListings] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:6001/listings")
+    fetch("https://gregslist-jsonserver.herokuapp.com/listings")
       .then((response) => response.json())
       .then((listings) => setListings(listings));
   }, []);

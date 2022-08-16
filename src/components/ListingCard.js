@@ -14,7 +14,7 @@ function ListingCard({ listing, onDeleteListing }) {
   }
 
   function handleDeleteClick() {
-    fetch(`http://localhost:6001/listings/${id}`, {
+    fetch(`https://gregslist-jsonserver.herokuapp.com/listings/${id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
