@@ -1,4 +1,3 @@
-// NOTE: Figure out why the listings aren't displaying
 import React, { useState, useEffect } from "react";
 import ListingCard from "./ListingCard";
 
