@@ -14,7 +14,7 @@ function ListingCard({ listing, onDeleteListing }) {
   }
 
   function handleDeleteClick() {
-    fetch(`https://gregslist-jsonserver.herokuapp.com/listings/${id}`, {
+    fetch(`https://react-hooks-mock-code-challenge.onrender.com/listings/${id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())

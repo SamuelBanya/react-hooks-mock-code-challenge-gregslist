@@ -4,7 +4,7 @@ import ListingCard from "./ListingCard";
 function ListingsContainer({ search }) {
   const [listings, setListings] = useState([]);
   useEffect(() => {
-    fetch("https://gregslist-jsonserver.herokuapp.com/listings")
+    fetch("https://react-hooks-mock-code-challenge.onrender.com/listings")
       .then((response) => response.json())
       .then((listings) => setListings(listings));
   }, []);
